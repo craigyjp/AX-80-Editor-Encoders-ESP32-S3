@@ -15,5 +15,3 @@ Several encoder buttons are used as default quick buttons, a press of the OSC1 l
 Aftertouch is now translated to the Modulation Wheel, this can be turned off or on the settings menu.
 
 I've also mapped CC 7 for volume to CC 96 (VCA level) to act as a volume control.
-
-A peek function has been added to the encoders, a single click will show the value of the encoder and not change it, another turn immediately will increment or decrement the value. This can be enabled or disabled in the menu.
