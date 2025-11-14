@@ -1,4 +1,6 @@
-A third build of this midi controller for the AX-80, all 45 controls are presented with buttons and LEDs for the switch functions. Encoders for the 0-99 controls. Encoders give a more accurate edit of the current parameter and can be accelerated to transition quickly of slowly across the range.
+A third build of this midi controller for the AX-80, all 45 controls are presented with buttons and LEDs for the switch functions. Encoders for the 0-99 controls. Encoders give a more accurate edit of the current parameter and can be accelerated to transition quickly of slowly across the range. 
+
+This build uses an ESP32-S3 Dev Kit board for the extra USB port and no longer needs an SD card as it uses littleFS.
 
 ![Synth](photos/synth.jpg)
 
