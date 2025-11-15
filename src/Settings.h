@@ -11,7 +11,7 @@ void settingsLoadFactory();
 void settingsLoadRAM();
 void settingsAfterTouch();
 void settingsSaveAll();
-// void settingsEncoderStepMode();
+void settingsEncoderStepMode();
 // void settingsPeekMode();
 
 int currentIndexMIDICh();
@@ -25,7 +25,7 @@ int currentIndexLoadFactory();
 int currentIndexLoadRAM();
 int currentIndexAfterTouch();
 int currentIndexSaveAll();
-// int currentIndexEncoderStepMode();
+int currentIndexEncoderStepMode();
 // int currentIndexPeekMode();
 
 void settingsMIDICh(int index, const char *value) {
@@ -124,14 +124,14 @@ void settingsSaveAll(int index, const char *value) {
   storeSaveAll(saveAll ? 1 : 0);
 }
 
-// void settingsEncoderStepMode(int index, const char *value) {
-//   if (strcmp(value, "Half") == 0) {
-//     halfStepMode = true;
-//   } else {
-//     halfStepMode = false;
-//   }
-//   storeEncoderStepMode(halfStepMode ? 1 : 0);
-// }
+void settingsEncoderStepMode(int index, const char *value) {
+  if (strcmp(value, "Half") == 0) {
+    halfStepMode = true;
+  } else {
+    halfStepMode = false;
+  }
+  storeEncoderStepMode(halfStepMode ? 1 : 0);
+}
 
 // void settingsPeekMode(int index, const char *value) {
 //   if (strcmp(value, "On") == 0) {
@@ -190,9 +190,9 @@ int currentIndexAfterTouch() {
   return getAfterTouch() ? 1 : 0;
 }
 
-// int currentIndexEncoderStepMode() {
-//   return getEncoderStepMode() ? 1 : 0;  // 0 = Full, 1 = Half
-// }
+int currentIndexEncoderStepMode() {
+  return getEncoderStepMode() ? 1 : 0;  // 0 = Full, 1 = Half
+}
 
 // int currentIndexPeekMode() {
 //   return getPeekMode() ? 1 : 0;     // delegate EEPROM read
@@ -204,7 +204,7 @@ void setUpSettings() {
   settings::append(settings::SettingsOption{"MIDI Out Ch.", {"Off", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "\0"}, settingsMIDIOutCh, currentIndexMIDIOutCh});
   settings::append(settings::SettingsOption{"Encoder", {"Type 1", "Type 2", "\0"}, settingsEncoderDir, currentIndexEncoderDir});
   settings::append(settings::SettingsOption{"Enc Speed", {"No", "Yes", "\0"}, settingsEncoderAccelerate, currentIndexEncoderAccelerate});
-//  settings::append(settings::SettingsOption{"Enc Step", {"Full", "Half", "\0"}, settingsEncoderStepMode, currentIndexEncoderStepMode});
+  settings::append(settings::SettingsOption{"Enc Step", {"Full", "Half", "\0"}, settingsEncoderStepMode, currentIndexEncoderStepMode});
 //  settings::append(settings::SettingsOption{"Peek Mode", {"Off", "On", "\0"}, settingsPeekMode, currentIndexPeekMode});
   settings::append(settings::SettingsOption{"MIDI Params", {"Off", "Send Params", "\0"}, settingsUpdateParams, currentIndexUpdateParams});
   settings::append(settings::SettingsOption{"Set Bank", {"RAM", "1", "2", "3", "4", "\0"}, settingsSetBank, currentIndexSetBank});

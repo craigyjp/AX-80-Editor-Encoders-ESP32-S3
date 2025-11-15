@@ -251,6 +251,9 @@ void setup() {
   // read in aftertouch setting
   afterTouch = getAfterTouch();
 
+  // read in encoder setting
+  halfStepMode = getEncoderStepMode();
+
   recallPatch(patchNo);  //Load first patch
   refreshScreen();
 }

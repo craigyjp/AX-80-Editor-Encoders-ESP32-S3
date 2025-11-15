@@ -13,6 +13,7 @@
 #define EEPROM_BANK_SELECT 10
 #define EEPROM_ENCODER_ACCELERATE 11
 #define EEPROM_AFTERTOUCH 12
+#define EEPROM_ENCODER_STEP_MODE 13
 
 int getMIDIChannel() {
   byte midiChannel = EEPROM.read(EEPROM_MIDI_CH);
@@ -165,5 +166,16 @@ boolean getSaveAll() {
 void storeSaveAll(byte saupdate)
 {
   EEPROM.write(EEPROM_SAVE_ALL, saupdate);
+  EEPROM.commit();
+}
+
+boolean getEncoderStepMode() {
+  byte sm = EEPROM.read(EEPROM_ENCODER_STEP_MODE);
+  if (sm > 1) return false; // default = full-step
+  return sm == 1;
+}
+
+void storeEncoderStepMode(byte mode) {
+  EEPROM.write(EEPROM_ENCODER_STEP_MODE, mode);
   EEPROM.commit();
 }

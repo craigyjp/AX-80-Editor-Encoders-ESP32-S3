@@ -55,6 +55,7 @@ boolean afterTouch = false;
 boolean saveAll = false;
 boolean accelerate = true;
 int speed = 1;
+bool halfStepMode = false;
 boolean updateParams = false;  //(EEPROM)
 int bankselect = 0;
 int old_value = 0;
